@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InvestMash - Screener</title>
+    <!-- External CSS libraries -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <link rel="stylesheet" href="/static/css/index.css">
+    <link rel="stylesheet" href="/static/css/calculator.css">
+    <script src="/static/js/script.js"></script>
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/favicon/logo icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon/logo icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon/logo icon.png">
+    <link rel="manifest" href="/static/favicon/site.webmanifest">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body class="light">
+    <!-- Navbar placeholder -->
+    <nav class="u-full-width no-print">
+        <!-- Mobile Navigation Holder -->
+        <div class="mobile-nav">
+            <!-- Logo -->
+            <div class="logo-holder">
+                <a href="{{ url_for('index') }}" class="logo-holder">
+                    <img alt="InvestMash" class="logo" src="/static/favicon/InvestMash.png"/>
+                </a>            
+            </div>
+            <!-- Menu Icon -->
+            <div class="menu-icon" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars"></i>
+            </div>
+            <!-- Mobile Navigation Content -->
+            <div id="mobile-menu" class="mobile-menu">
+                <!-- Navigation Links -->
+                <div class="mobile-links">
+                    <a href="{{ url_for('index') }}">Home</a>
+                    <a href="{{ url_for('explore_screener') }}">Screens</a>
+                    <a href="/finance/personal_finance.html">Personal Finance</a>
+                    <a href="/contact.html">Contact</a>
+                    <a href="/login/indexd41d.html?">Login</a>
+                    <a href="/register/indexd41d.html?">Sign Up</a>
+                </div>
+    
+            </div>
+        </div>
+        <!-- Top Navigation Holder (for desktop) -->
+        <div class="top-nav-holder">
+            <div class="container">
+                <div class="layer-holder top-navigation">
+                    <div class="layer flex flex-space-between" style="align-items: center; height: 50px">
+                        <!-- Logo -->
+                        <a href="{{ url_for('index') }}" class="logo-holder">
+                                <img alt="InvestMash" class="logo" src="/static/favicon/InvestMash.png"/>
+                        </a>                    
+    
+                        <!-- Menu Items -->
+                        <div class="desktop-links">
+                            <a href="{{ url_for('index') }}">Home</a>
+                            <a href="{{ url_for('explore_screener') }}">Screens</a>
+                            <div class="dropdown-menu">
+                                <button class="button-plain" type="button" onclick="toggleDropdown(event)">
+                                    Personal Finance
+                                    <i class="icon-down"></i>
+                                </button>
+                                <ul class="dropdown-content flex-column tools-menu" style="width: 350px" id="nav-tools-menu">
+                                    <li>
+                                        <a href="/finance/investment.html" class="flex flex-align-center flex-gap-16">
+                                            <div class="bg-stripes square-56">
+                                                <img src="/static/favicon/investment.svg" alt="Investment Calculator">
+                                            </div>
+                                            <div>
+                                                <div class="font-weight-500 font-size-14" style="font-weight: 850;font-size: 15px;">Investment Calculator</div>
+                                                <div class="sub font-size-13" style="font-size: 12px;">Calculate interest, returns, savings, etc.</div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    
+                                    <!-- Budgeting and Saving -->
+                                    <li>
+                                        <a href="/finance/budgeting_saving.html" class="flex flex-align-center flex-gap-16">
+                                            <div class="bg-stripes square-56">
+                                                <img src="/static/favicon/saving and budgeting.svg" alt="Budgeting and Saving Calculator">
+                                            </div>
+                                            <div>
+                                                <div class="font-weight-500 font-size-14" style="font-weight: 850;font-size: 15px;">Budgeting and Saving Calculator</div>
+                                                <div class="sub font-size-13"style="font-size: 12px;">Manage your budget and savings goals</div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <!-- Loans -->
+                                    <li>
+                                        <a href="/finance/loans.html" class="flex flex-align-center flex-gap-16">
+                                            <div class="bg-stripes square-56">
+                                                <img src="/static/favicon/loan.svg" alt="Loans Calculator">
+                                            </div>
+                                            <div>
+                                                <div class="font-weight-500 font-size-14"style="font-weight: 850;font-size: 15px;">Loans Calculator</div>
+                                                <div class="sub font-size-13"style="font-size: 12px;">Calculate different types of loans</div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <!-- Insurance -->
+                                    <li>
+                                        <a href="/finance/insurance.html" class="flex flex-align-center flex-gap-16">
+                                            <div class="bg-stripes square-56">
+                                                <img src="/static/favicon/insurance.svg" alt="Insurance Calculator">
+                                            </div>
+                                            <div>
+                                                <div class="font-weight-500 font-size-14"style="font-weight: 850;font-size: 15px;">Insurance Calculator</div>
+                                                <div class="sub font-size-13"style="font-size: 12px;">Estimate insurance coverage and premiums</div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <!-- Mortgages and Real Estate -->
+                                    <li>
+                                        <a href="/finance/mortgage_real_estate_calculator.html" class="flex flex-align-center flex-gap-16">
+                                            <div class="bg-stripes square-56">
+                                                <img src="/static/favicon/mortgage.svg" alt="Mortgage and Real Estate Calculator">
+                                            </div>
+                                            <div>
+                                                <div class="font-weight-500 font-size-14" style="font-weight: 850;font-size: 15px;">Mortgage and Real Estate Calculator</div>
+                                                <div class="sub font-size-13" style="font-size: 12px;">Calculate mortgage payments, rates, house affordability, etc.</div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    
+                                
+                                    <!-- Student Loans -->
+                                    <li>
+                                        <a href="/finance/student_loans.html" class="flex flex-align-center flex-gap-16">
+                                            <div class="bg-stripes square-56">
+                                                <img src="/static/favicon/student.svg" alt="Student Loans Calculator">
+                                            </div>
+                                            <div>
+                                                <div class="font-weight-500 font-size-14"style="font-weight: 850;font-size: 15px;">Student Loans Calculator</div>
+                                                <div class="sub font-size-13"style="font-size: 12px;">Estimate student loan payments and options</div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <!-- Taxes -->
+                                    <li>
+                                        <a href="/finance/taxes.html" class="flex flex-align-center flex-gap-16">
+                                            <div class="bg-stripes square-56">
+                                                <img src="/static/favicon/tax.svg" alt="Taxes Calculator">
+                                            </div>
+                                            <div>
+                                                <div class="font-weight-500 font-size-14"style="font-weight: 850;font-size: 15px;">Taxes Calculator</div>
+                                                <div class="sub font-size-13"style="font-size: 12px;">Calculate tax liabilities and deductions</div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <!-- Retirement -->
+                                    <li>
+                                        <a href="/finance/retirement.html" class="flex flex-align-center flex-gap-16">
+                                            <div class="bg-stripes square-56">
+                                                <img src="/static/favicon/pension.svg" alt="Retirement Calculator">
+                                            </div>
+                                            <div>
+                                                <div class="font-weight-500 font-size-14"style="font-weight: 850;font-size: 15px;">Retirement Calculator</div>
+                                                <div class="sub font-size-13"style="font-size: 12px;">Plan for retirement savings, investments, etc.</div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                
+                                </ul>
+                            </div>
+                            <a href="/contact.html">Contact</a>
+                            <a href="/login.html">Login</a>
+                            <a href="/register.html">Sign Up</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>    <h1>Loan Calculators</h1>
+    <div class="calculator-list">
+        <!-- Auto Loan Calculator -->
+        <div class="calculator">
+            <a href="/finance/loans/auto_loan_calculator.html"><h2>Auto Loan Calculator</h2></a>
+            <p>Determines monthly car loan payments based on loan amount, interest rate, and term.</p>
+        </div>
+    
+        <!-- Personal Loan Calculator -->
+        <div class="calculator">
+            <a href="/finance/loans/personal_loan_calculator.html"><h2>Personal Loan Calculator</h2></a>
+            <p>Computes monthly payments for personal loans based on loan amount, interest rate, and term.</p>
+        </div>
+    
+        <!-- Business Loan Calculator -->
+        <div class="calculator">
+            <a href="/finance/loans/business_loan_calculator.html"><h2>Business Loan Calculator</h2></a>
+            <p>Calculates monthly payments and total interest for business loans based on loan amount, interest rate, and term.</p>
+        </div>
+    
+        <!-- Payday Loan Calculator -->
+        <div class="calculator">
+            <a href="/finance/loans/payday_loan_calculator.html"><h2>Payday Loan Calculator</h2></a>
+            <p>Computes fees and interest for payday loans based on loan amount and repayment period.</p>
+        </div>
+    
+        <!-- Debt Consolidation Calculator -->
+        <div class="calculator">
+            <a href="/finance/loans/debt_consolidation_calculator.html"><h2>Debt Consolidation Calculator</h2></a>
+            <p>Determines the monthly payment and interest savings from consolidating multiple debts into a single loan.</p>
+        </div>
+    
+        <!-- Loan Comparison Calculator -->
+        <div class="calculator">
+            <a href="/finance/loans/loan_comparison_calculator.html"><h2>Loan Comparison Calculator</h2></a>
+            <p>Helps compare multiple loan offers by evaluating monthly payments, total interest, and other factors.</p>
+        </div>
+    
+        <!-- Amortization Calculator -->
+        <div class="calculator">
+            <a href="/finance/loans/amortization_calculator.html"><h2>Amortization Calculator</h2></a>
+            <p>Generates an amortization schedule showing how loan payments are allocated to principal and interest over time.</p>
+        </div>
+    
+        <!-- Early Loan Payoff Calculator -->
+        <div class="calculator">
+            <a href="/finance/loans/early_loan_payoff_calculator.html"><h2>Early Loan Payoff Calculator</h2></a>
+            <p>Determines how much time and money borrowers can save by making extra payments or paying off a loan early.</p>
+        </div>
+    
+        <!-- Adjustable-Rate Mortgage (ARM) Calculator -->
+        <div class="calculator">
+            <a href="/finance/loans/arm_calculator.html"><h2>Adjustable-Rate Mortgage (ARM) Calculator</h2></a>
+            <p>Helps borrowers understand how their monthly mortgage payments may change over time with an adjustable interest rate.</p>
+        </div>
+    
+        <!-- Home Equity Loan Calculator -->
+        <div class="calculator">
+            <a href="/finance/loans/home_equity_loan_calculator.html"><h2>Home Equity Loan Calculator</h2></a>
+            <p>Computes monthly payments and total interest for a home equity loan, allowing homeowners to borrow against the equity in their homes.</p>
+        </div>
+    
+        <!-- Balloon Loan Calculator -->
+        <div class="calculator">
+            <a href="/finance/loans/balloon_loan_calculator.html"><h2>Balloon Loan Calculator</h2></a>
+            <p>Calculates monthly payments and total interest for a balloon loan, which typically features lower initial payments followed by a large "balloon" payment at the end.</p>
+        </div>
+    
+        <!-- Bridge Loan Calculator -->
+        <div class="calculator">
+            <a href="/finance/loans/bridge_loan_calculator.html"><h2>Bridge Loan Calculator</h2></a>
+            <p>Assists in determining the monthly payments and total interest for a bridge loan, used to finance the purchase of a new home before selling an existing one.</p>
+        </div>
+    
+        <!-- Construction Loan Calculator -->
+        <div class="calculator">
+            <a href="/finance/loans/construction_loan_calculator.html"><h2>Construction Loan Calculator</h2></a>
+            <p>Estimates the monthly payments and total interest for a construction loan, which finances the construction of a new home or renovation project.</p>
+        </div>
+    </div>
+    
+    <script src="/static/js/script.js"></script>
+</body>
+</html>
